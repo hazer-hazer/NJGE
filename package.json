@@ -1,0 +1,32 @@
+{
+  "name": "njge",
+  "version": "0.1.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "dev": "tsc & node ./built/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hazer-hazer/NJGE.git"
+  },
+  "keywords": [
+    "game",
+    "engine"
+  ],
+  "author": "hazer_hazer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hazer-hazer/NJGE/issues"
+  },
+  "homepage": "https://github.com/hazer-hazer/NJGE#readme",
+  "devDependencies": {
+    "module-alias": "2.2.2",
+    "typescript": "3.8.3"
+  },
+  "_moduleAliases": {
+    "@blocks": "./built/blocks",
+    "@utils": "./built/utils",
+    "@math": "./built/utils/math"
+  }
+}
