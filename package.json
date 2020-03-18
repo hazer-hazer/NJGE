@@ -27,6 +27,13 @@
   "_moduleAliases": {
     "@blocks": "./built/blocks",
     "@utils": "./built/utils",
-    "@math": "./built/utils/math"
+    "@math": "./built/utils/math",
+    "@core": "./built/core"
+  },
+  "dependencies": {
+    "@types/node": "13.9.1",
+    "canvas": "2.6.1",
+    "express": "4.17.1",
+    "socket.io": "2.3.0"
   }
 }

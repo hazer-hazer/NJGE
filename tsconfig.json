@@ -8,7 +8,8 @@
         "paths": {
         	"@blocks/*": ["blocks/*"],
         	"@utils/*": ["utils/*"],
-        	"@math/*": ["utils/math/*"]
+            "@math/*": ["utils/math/*"],
+            "@core/*": ["core/*"]
         }
     },
     "include": [ "./src/**/*" ]

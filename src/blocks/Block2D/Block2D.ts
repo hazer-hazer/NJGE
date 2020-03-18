@@ -2,7 +2,7 @@ import Block from '@blocks/Block';
 import V2 from '@math/V2';
 
 class Block2D extends Block {
-    private position: V2;
+    protected position: V2;
 
     public constructor(v ?: V2){
         super();
@@ -21,7 +21,7 @@ class Block2D extends Block {
             v = x;
         }
         this.position = v;
-        this.trigger('PositionChanged', this.position);
+        this.trigger('positionChanged', this.position);
         return this;
     }
 
@@ -33,7 +33,8 @@ class Block2D extends Block {
             v = x;
         }
         this.position = this.position.add(v);
-        this.trigger('Moved', this.position)
+        this.trigger('moved', this.position);
+
         return this;
     }
 }

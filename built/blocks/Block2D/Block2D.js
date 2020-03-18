@@ -19,7 +19,7 @@ class Block2D extends Block_1.default {
             v = x;
         }
         this.position = v;
-        this.trigger('PositionChanged', this.position);
+        this.trigger('positionChanged', this.position);
         return this;
     }
     move(x, y) {
@@ -31,7 +31,7 @@ class Block2D extends Block_1.default {
             v = x;
         }
         this.position = this.position.add(v);
-        this.trigger('Moved', this.position);
+        this.trigger('moved', this.position);
         return this;
     }
 }
