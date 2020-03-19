@@ -9,22 +9,33 @@ import { WebCanvas } from "@utils/WebCanvas";
 import * as fs from "fs"
 import Engine from "@core/Engine";
 import Server from "@utils/Server";
+import { Timer } from "@blocks/Timer/Timer";
 
 const scene = new Block();
 
 const b = new Line(new V2(0, 0), new V2(100, 100));
 
-scene.addChildren(b);
+b.addChild(new Timer({
+    interval: 1000,
+    iterations: 5,
+    startOnCreate: true
+}));
 
-const cvs = new WebCanvas();
+scene.addChild(b);
 
 const engine = new Engine({
-    canvas: cvs,
-    rootBlock: scene,
     fps: 1
 });
 
-engine.launch();
+engine.addScene({
+    rootBlock: scene,
+    name: 'main',
+    canvasType: 'web',
+    canvas: {
+        width: 1080,
+        height: 720
+    }
+});
 
 const server = new Server();
 
@@ -38,8 +49,6 @@ const sendImage = canvas => {
     const base64 = canvas.toBuffer('image/jpeg').toString('base64');
 
     socket.emit('draw', { img: base64 });
-
-    b.move(new V2(100, 100))
 }
 
 server.onIo('connection', s => {
@@ -51,3 +60,5 @@ engine.onTick(canvas => {
 
     sendImage(canvas);
 });
+
+engine.launch();

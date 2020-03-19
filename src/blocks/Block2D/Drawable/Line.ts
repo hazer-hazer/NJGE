@@ -1,6 +1,6 @@
 import { Drawable } from "./Drawable";
 import V2 from "@utils/math/V2";
-import { Canvas } from "@utils/Canvas";
+import Canvas from "@utils/Canvas";
 
 class Line extends Drawable {
     private from: V2;

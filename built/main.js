@@ -4,19 +4,23 @@ require("module-alias/register");
 const Block_1 = require("@blocks/Block");
 const V2_1 = require("@utils/math/V2");
 const Line_1 = require("@blocks/Block2D/Drawable/Line");
-const WebCanvas_1 = require("@utils/WebCanvas");
 const Engine_1 = require("@core/Engine");
 const Server_1 = require("@utils/Server");
 const scene = new Block_1.default();
 const b = new Line_1.default(new V2_1.default(0, 0), new V2_1.default(100, 100));
 scene.addChildren(b);
-const cvs = new WebCanvas_1.WebCanvas();
 const engine = new Engine_1.default({
-    canvas: cvs,
-    rootBlock: scene,
     fps: 1
 });
-engine.launch();
+engine.addScene({
+    rootBlock: scene,
+    name: 'main',
+    canvasType: 'web',
+    canvas: {
+        width: 1080,
+        height: 720
+    }
+});
 const server = new Server_1.default();
 var socket;
 const sendImage = canvas => {
@@ -34,3 +38,4 @@ engine.onTick(canvas => {
     console.log('Tick');
     sendImage(canvas);
 });
+engine.launch();

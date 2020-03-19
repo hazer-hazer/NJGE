@@ -1,11 +1,21 @@
 import Events from "@utils/Events";
+import { uuidv4 } from "uuid";
 
-class Block implements Events.EventHandler {
+export type BlockOptions = {
+	name?: string;
+};
+
+export class Block implements Events.EventHandler {
 	events: Events.EventMap = new Map<string, ((data?: object) => void)[]>();
 
+	private name: string;
+
+	private parent: Block;
 	private children: Block[];
 
-	public constructor(){
+	public constructor(opts?: BlockOptions){
+		this.name = opts.name || uuidv4();
+
 		this.events;
 		this.children = [];
 	}
@@ -14,11 +24,16 @@ class Block implements Events.EventHandler {
 		return Block.name;	
 	}
 
+	public getParent() : Block {
+		return this.parent;
+	}
+
 	public getChildren() : Block[] {
 		return this.children;
 	}
 
-	public addChildren(child: Block) : void {
+	public addChild(child: Block) : void {
+		child.parent = this;
 		this.children.push(child);
 	}
         

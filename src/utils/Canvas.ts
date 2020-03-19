@@ -1,6 +1,6 @@
 import V2 from "./math/V2";
 
-export interface Canvas {
+interface Canvas {
     width: number;
     height: number;
 
@@ -11,3 +11,5 @@ export interface Canvas {
 
     toBuffer(mimeType?: string, config?: any) : Buffer;
 }
+
+export default Canvas;

@@ -7,7 +7,7 @@ namespace Events{
         
         on(name: string, method: Function) : void;
         trigger(name: string) : void;
-    }   
+    }
 }
 
 export default Events

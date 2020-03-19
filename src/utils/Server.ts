@@ -1,13 +1,12 @@
 const http = require('http');
 const io = require('socket.io')
-const app = require('express')()
 
 class Server {
     private server
     private io
 
     public constructor(){
-        this.server = http.createServer(app);
+        this.server = http.createServer();
         this.io = io.listen(this.server);
 
         this.server.listen(8080, 'localhost', () => {

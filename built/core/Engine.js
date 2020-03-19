@@ -1,34 +1,43 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Drawable_1 = require("@blocks/Block2D/Drawable/Drawable");
+const Scene_1 = require("./Scene");
 class Engine {
     constructor(opts) {
         this.tickEvents = [];
-        this.canvas = opts.canvas;
-        this.rootBlock = opts.rootBlock;
         this.fps = opts.fps;
+        this.scenes = new Map();
     }
-    getCanvas() {
-        return this.canvas;
-    }
-    draw() {
-        this.canvas.clear();
-        for (let block of this.rootBlock.getChildren()) {
-            if (block instanceof Drawable_1.Drawable) {
-                block.draw(this.canvas);
-            }
+    // Scenes
+    chooseScene(name) {
+        if (!this.scenes.has(name)) {
+            throw new Error('Scene');
         }
+        this.currentScene = this.scenes.get(name);
+        return this.currentScene;
     }
+    addScene(opts) {
+        let scene = new Scene_1.Scene(opts);
+        this.scenes.set(scene.getName(), scene);
+        this.chooseScene(scene.getName());
+        return scene;
+    }
+    getCurrentScene() {
+        return this.currentScene;
+    }
+    // Ticking
     onTick(ev) {
         this.tickEvents.push(ev);
     }
     triggerTickEvents() {
         for (let f of this.tickEvents) {
-            f.call(this, this.canvas);
+            f.call(this, this.currentScene.getCanvas());
         }
     }
     tick() {
-        this.draw();
+        if (!this.currentScene) {
+            return;
+        }
+        this.currentScene.draw();
     }
     launch() {
         setInterval(() => {

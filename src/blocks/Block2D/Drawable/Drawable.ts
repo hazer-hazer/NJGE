@@ -1,5 +1,5 @@
 import Block2D from "../Block2D";
-import { Canvas } from "@utils/Canvas";
+import Canvas from "@utils/Canvas";
 
 export abstract class Drawable extends Block2D {
     
