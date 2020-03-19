@@ -14,7 +14,9 @@ export class Block implements Events.EventHandler {
 	private children: Block[];
 
 	public constructor(opts?: BlockOptions){
-		this.name = opts.name || uuidv4();
+		if(opts){
+			this.name = opts.name || uuidv4();
+		}
 
 		this.events;
 		this.children = [];
@@ -30,6 +32,10 @@ export class Block implements Events.EventHandler {
 
 	public getChildren() : Block[] {
 		return this.children;
+	}
+
+	public findChildren(name: string) : Block {
+		return this.children.find(c => c.name === name);
 	}
 
 	public addChild(child: Block) : void {

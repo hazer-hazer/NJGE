@@ -16,15 +16,22 @@ const scene = new Block();
 const b = new Line(new V2(0, 0), new V2(100, 100));
 
 b.addChild(new Timer({
-    interval: 1000,
-    iterations: 5,
+    name: 'timer',
+    interval: 50,
+    iterations: 100,
     startOnCreate: true
 }));
+
+const timer = b.findChildren('timer');
+
+timer.on('elapsed', line => {
+    (line as Block2D).move(new V2(10, 10));
+});
 
 scene.addChild(b);
 
 const engine = new Engine({
-    fps: 1
+    fps: 60
 });
 
 engine.addScene({

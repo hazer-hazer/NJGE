@@ -1,6 +1,6 @@
-import Block from "@blocks/Block";
+import Block, { BlockOptions } from "@blocks/Block";
 
-export type TimerOptions = {
+export type TimerOptions = BlockOptions & {
     interval: number;
     iterations?: number;
 
@@ -15,7 +15,7 @@ export class Timer extends Block {
     private intervalRef;
 
     public constructor(opts: TimerOptions){
-        super();
+        super(opts);
 
         this.interval = opts.interval;
         this.iterations = opts.iterations || 1;
@@ -32,7 +32,8 @@ export class Timer extends Block {
 
     public start() : void {
         this.intervalRef = setInterval(() => {
-            this.trigger('elapsed');
+            this.trigger('elapsed', this.getParent());
+            console.log(`Timer iteration ${this.lastIteration} when max iterations ${this.iterations}`)
             if(++this.lastIteration > this.iterations){
                 this.stop();
             }
