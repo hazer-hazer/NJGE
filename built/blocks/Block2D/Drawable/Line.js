@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Drawable_1 = require("./Drawable");
 class Line extends Drawable_1.Drawable {
-    constructor(from, to) {
-        super();
-        this.from = from;
-        this.to = to;
+    constructor(opts) {
+        super(opts);
+        this.from = opts.from;
+        this.to = opts.to;
     }
     draw(canvas) {
         console.log(`Draw line from ${this.from.add(this.position).asArray()} to ${this.to.add(this.position).asArray()}`);

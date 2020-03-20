@@ -14,7 +14,7 @@ export class Timer extends Block {
     private lastIteration: number;
     private intervalRef;
 
-    public constructor(opts: TimerOptions){
+    public constructor(opts?: TimerOptions){
         super(opts);
 
         this.interval = opts.interval;

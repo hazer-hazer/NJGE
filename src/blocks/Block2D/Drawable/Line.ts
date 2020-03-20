@@ -1,15 +1,20 @@
-import { Drawable } from "./Drawable";
+import { Drawable, DrawableOptions } from "./Drawable";
 import V2 from "@utils/math/V2";
 import Canvas from "@utils/Canvas";
+
+export type LineOptions = DrawableOptions & {
+    from: V2,
+    to: V2
+};
 
 class Line extends Drawable {
     private from: V2;
     private to: V2;
 
-    public constructor(from: V2, to: V2) {
-        super();
-        this.from = from;
-        this.to = to;
+    public constructor(opts: LineOptions) {
+        super(opts);
+        this.from = opts.from;
+        this.to = opts.to;
     }
 
     public draw(canvas: Canvas) : void {

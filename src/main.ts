@@ -1,31 +1,31 @@
 import "module-alias/register"
-import Block2D from '@blocks/Block2D/Block2D';
 import Block from '@blocks/Block'
 import V2 from "@utils/math/V2"
 import Line from "@blocks/Block2D/Drawable/Line"
-import { Drawable } from "@blocks/Block2D/Drawable/Drawable";
-import { WebCanvas } from "@utils/WebCanvas";
 
-import * as fs from "fs"
 import Engine from "@core/Engine";
 import Server from "@utils/Server";
 import { Timer } from "@blocks/Timer/Timer";
 
 const scene = new Block();
 
-const b = new Line(new V2(0, 0), new V2(100, 100));
+const b = new Line({
+    name: 'line',
+    from: new V2(0, 0),
+    to: new V2(100, 100)
+});
 
 b.addChild(new Timer({
     name: 'timer',
-    interval: 50,
+    interval: 1000 / 60,
     iterations: 100,
     startOnCreate: true
 }));
 
-const timer = b.findChildren('timer');
+const timer = b.findChild('timer');
 
 timer.on('elapsed', line => {
-    (line as Block2D).move(new V2(10, 10));
+    line.move(new V2(10, 10));
 });
 
 scene.addChild(b);

@@ -3,9 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Block_1 = require("@blocks/Block");
 const V2_1 = require("@math/V2");
 class Block2D extends Block_1.default {
-    constructor(v) {
-        super();
-        this.position = v || new V2_1.default(0, 0);
+    constructor(opts) {
+        super(opts);
+        this.position = opts.position || new V2_1.default(0, 0);
     }
     getPosition() {
         return this.position;
@@ -35,4 +35,4 @@ class Block2D extends Block_1.default {
         return this;
     }
 }
-exports.default = Block2D;
+exports.Block2D = Block2D;

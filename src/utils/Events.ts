@@ -1,6 +1,6 @@
 namespace Events{
 
-    export type EventMap = Map <string, ((data?: object) => void)[]>;
+    export type EventMap = Map <string, ((data?: any) => void)[]>;
     
     export interface EventHandler{
         events: EventMap;

@@ -1,12 +1,16 @@
-import Block from '@blocks/Block';
+import Block, { BlockOptions } from '@blocks/Block';
 import V2 from '@math/V2';
 
-class Block2D extends Block {
+export type Block2DOptions = BlockOptions & {
+    position?: V2;
+};
+
+export class Block2D extends Block {
     protected position: V2;
 
-    public constructor(v ?: V2){
-        super();
-        this.position = v || new V2(0, 0);
+    public constructor(opts?: Block2DOptions){
+        super(opts);
+        this.position = opts.position || new V2(0, 0);
     }
 
     public getPosition() : V2 {
@@ -38,5 +42,3 @@ class Block2D extends Block {
         return this;
     }
 }
-
-export default Block2D
