@@ -1,8 +1,3 @@
-import Canvas from "@utils/Canvas";
-import Block from "@blocks/Block";
-import { Drawable } from "@blocks/Block2D/Drawable/Drawable";
-import Events from "@utils/Events";
-import { performance } from "perf_hooks"
 import { Scenes, Scene, SceneOptions } from "./Scene";
 
 type EngineOptions = {

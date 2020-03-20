@@ -1,4 +1,5 @@
 import V2 from "./math/V2";
+import { Messages } from "./Message";
 
 interface Canvas {
     width: number;

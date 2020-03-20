@@ -69,9 +69,7 @@ export class Scene {
         this.canvas.clear();
 
         for(let block of this.rootBlock.getChildren().values()){
-            console.log('Draw block', block, block instanceof Drawable);
-            if(block instanceof Drawable){
-                
+            if(block instanceof Drawable){                
                 block.draw(this.canvas);
                 block.drawChildren(this.canvas);
             }

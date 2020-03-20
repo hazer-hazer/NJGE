@@ -13,6 +13,7 @@ export class Drawable extends Block2D {
     
     public draw(canvas: Canvas) : void {
         this.log(`Draw Method is not realized`);
+        return;
     }
 
     public drawChildren(canvas: Canvas) : void {
